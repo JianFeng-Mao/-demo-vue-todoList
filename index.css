@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+body {
+    background-color: #cdcdcd;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 100px;
+    line-height: 50px;
+    color: #ddd;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.addInput {
+    width: 60%;
+}
+
+.addInput input {
+    width: 80%;
+    height: 24px;
+    border-radius: 4px;
+    text-indent: 10px;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, .24),
+        0px 1px 10px rgba(0, 0, 0, .45) inset;
+}
+
+.addInput button {
+    border: none;
+    width: 15%;
+    height: 24px;
+    box-shadow: 1px 1px 0 rgba(255, 255, 255, .3),
+        2px 2px 5px -1px rgba(255, 255, 255, .5),
+        0 1px 0 rgba(0, 0, 0, .45) inset;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .9);
+    vertical-align: middle;
+    outline: none;
+}
+.underway{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+.underway span.mask-num{
+    font-size: 14px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 50%;
+    color: #666;
+    background-color: #e6e6fa;
+}
+.mask-list li{
+    display: flex;
+    padding: 0 15px;
+    border-left: 5px solid #629A9C;
+    border-radius: 4px;
+    height: 32px;
+    justify-content: space-between;
+    background-color: #fff;
+    align-items: center;
+    margin: 0 0 10px;
+}
+.mask-list.complete-list li{
+    border-left-color: #999;
+    opacity: .5;
+}
+.container {
+    width: 600px;
+    margin: 0 auto;
+}
+[v-cloak]{
+    display: none !important;
+}

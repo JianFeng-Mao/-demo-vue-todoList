@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDoList</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <header>
+            <div class="container">
+                <div class="logo">toDoList</div>
+                <div class="addInput">
+                    <input type="text" @input="addToDo" :value="curMusk">
+                    <button @click="needDoList">添加</button>
+                </div>
+            </div>
+        </header>
+        <div class="container" >
+            <h2 class="underway">
+                <span>正在进行</span>
+                <span class="mask-num">{{ needDoArr.length }}</span>
+            </h2>
+            <ul class="mask-list">
+                <li
+                v-for="(needDo,needIndex) in needDoArr"
+                :key="needDo.id"
+                
+                >
+                    <div>
+                        <input type="checkbox" @change="changeState('needDo',needIndex)">
+                        <span>{{ needDo.name }}</span>
+                    </div>
+                    <button @click="deleteMusk('needDo',needIndex)">删除</button>
+                </li>
+            </ul>
+        </div>
+        <div class="container" >
+            <h2 class="underway">
+                <span>已经完成</span>
+                <span class="mask-num">{{ completeArr.length }}</span>
+            </h2>
+            <ul class="mask-list complete-list">
+                <li 
+                v-for="(complete,index) in completeArr"
+                :key="complete.id"
+                >
+                    <div>
+                        <input type="checkbox" @change="changeState('complete',index)">
+                        <span>{{ complete.name }}</span>
+                    </div>
+                    <button @click="deleteMusk('complete',index)">删除</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:"#app",
+            data:{
+                curMusk:'',
+                needDoArr:[],
+                completeArr:[]
+            },
+            methods:{
+                addToDo(e){
+                    this.curMusk = e.target.value;
+                },
+                needDoList(){
+                    if(this.curMusk == ""){return}
+                    this.needDoArr.push({
+                        name:this.curMusk,
+                        id:Math.random()
+                    });
+                    this.curMusk = "";
+                },
+                changeState(type,index){
+                    if(type == "needDo"){
+                        const toComplete = this.needDoArr.splice(index,1);
+                        this.completeArr.push(...toComplete);
+                    }else if(type == "complete"){
+                        const toComplete = this.completeArr.splice(index,1);
+                        this.needDoArr.push(...toComplete);
+                    }
+                },
+                deleteMusk(type,index){
+                    console.log(type)
+                    type == "needDo" ? this.needDoArr.splice(index,1) 
+                        : this.completeArr.splice(index,1);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
